@@ -1,29 +1,31 @@
 #include<iostream>
-#include<vector>
 #include<algorithm>
+#include<vector>
 
 using namespace std;
 
-int main() {
+int main()
+{
     int N;
     cin >> N;
-
+    
     vector<double> scores(N);
-    double max_score = 0;
-
-    // 점수 입력 받기
-    for (int i = 0; i < N; i++) {
+    double maxScore = 0;
+    
+    for(int i = 0; i < N; i++)
+    {
         cin >> scores[i];
-        max_score = max(max_score, scores[i]);
+        maxScore = max(maxScore, scores[i]);
     }
-
-    double total = 0;
-    for (int i = 0; i < N; i++) {
-        scores[i] = scores[i] / max_score * 100;
-        total += scores[i];
+    
+    double totalScore = 0;
+    for(int i = 0; i < N; i++)
+    {
+        scores[i] = scores[i] / maxScore * 100;
+        totalScore += scores[i];
     }
-
+    
     cout << fixed;
     cout.precision(2);
-    cout << total / N << endl;
+    cout << totalScore / N;
 }
