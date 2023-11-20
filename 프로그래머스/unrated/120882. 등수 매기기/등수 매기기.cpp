@@ -10,7 +10,7 @@ vector<int> solution(vector<vector<int>> score)
     vector<int> answer;
     vector<int> totalScore, copyScore;
     
-    // 1. 평균값 저장을 벡터에 저장
+    // 1. 두 점수의 합을 벡터에 저장
     for(int i = 0; i < score.size(); i++)
     {
         int sumScore = 0;
@@ -20,7 +20,6 @@ vector<int> solution(vector<vector<int>> score)
             sumScore += score[i][j];
         }
         
-        //int avgScore = sumScore / score[i].size();
         totalScore.push_back(sumScore);
         copyScore.push_back(sumScore);
     }
