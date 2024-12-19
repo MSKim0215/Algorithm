@@ -1,10 +1,10 @@
 # [level 0] 문자열 여러 번 뒤집기 - 181913 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181913) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181913?language=csharp) 
 
 ### 성능 요약
 
-메모리: 34.7 MB, 시간: 46.69 ms
+메모리: 31.2 MB, 시간: 1.17 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 12월 19일 14:04:44
+2024년 12월 19일 14:21:59
 
 ### 문제 설명
 
