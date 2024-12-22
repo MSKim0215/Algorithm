@@ -2,69 +2,69 @@ using System;
 
 public class Solution
 {
-    public string solution(string polynomial)
+    private string[] DevidePolynomial(string polynomial)
     {
-        string removeSpace = polynomial.Replace(" ", string.Empty);
-        string[] plusSplit = removeSpace.Split("+");
+        return polynomial.Replace(" ", string.Empty).Split("+");
+    }
+    
+    private string GetValueX(string targetStr)
+    {
+        string result = string.Empty;
         
-        int xNum = 0; 
-        int num = 0;     
-        
-        for(int i = 0; i < plusSplit.Length; i++)
+        for(int i = 0; i < targetStr.Length; i++)
         {
-            if(plusSplit[i].Contains("x"))
+            if(targetStr[i] != 'x')
             {
-                string xValue = string.Empty;
-                
-                for(int j = 0; j < plusSplit[i].Length; j++)
-                {
-                    if(plusSplit[i][j] != 'x')
-                    {
-                        xValue += plusSplit[i][j].ToString();
-                    }
-                    else
-                    {
-                        if(xValue == string.Empty)
-                        {
-                            xValue = "1";
-                        }
-                    }
-                }
-                
-                xNum += int.Parse(xValue);
+                result += targetStr[i].ToString();
             }
             else
             {
-                num += int.Parse(plusSplit[i]);
+                if(result == string.Empty)
+                {
+                    result = "1";
+                }
             }
         }
         
+        return result;
+    }
+    
+    private string GetPolynomial(int xNum, int baseNum)
+    {
         string answer = string.Empty;
         
         if(xNum != 0)
         {
-            if(xNum == 1)
-            {
-                answer += "x";
-            }
-            else
-            {
-                answer += (xNum + "x");
-            }
+            answer = (xNum == 1) ? "x" : (xNum + "x");
         }
         
-        if(num > 0)
+        if(baseNum > 0)
         {
-            if(xNum != 0)
-            {
-                answer += (" + " + num);
-            }
-            else
-            {
-                answer += num;
-            }
+            answer += (xNum != 0) ? (" + " + baseNum) : baseNum.ToString();
         }
         
         return answer;
+    }
+    
+    public string solution(string polynomial)
+    {
+        string[] devidePolynomial = DevidePolynomial(polynomial);
+        
+        int xNum = 0; 
+        int baseNum = 0;     
+        
+        for(int i = 0; i < devidePolynomial.Length; i++)
+        {
+            if(devidePolynomial[i].Contains("x"))
+            {
+                xNum += int.Parse(GetValueX(devidePolynomial[i]));
+            }
+            else
+            {
+                baseNum += int.Parse(devidePolynomial[i]);
+            }
+        }
+        
+        return GetPolynomial(xNum, baseNum);
     }
 }
