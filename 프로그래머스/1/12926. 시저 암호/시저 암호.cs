@@ -9,13 +9,15 @@ public class Solution
             int changeValue = n;
             char changeChar = s[i];
             
+            var changeTarget = changeValue + changeChar;
+
             if(s[i] >= 'A' && s[i] <= 'Z')
             {
-                answer += (char)(changeChar + changeValue > 'Z' ? ('A' + (changeChar + changeValue - 'Z' - 1)) : changeChar + changeValue);
+                answer += (char)(changeTarget > 'Z' ? ('A' + (changeTarget - 'Z' - 1)) : changeTarget);
             }
             else if(s[i] >= 'a' && s[i] <= 'z')
             {
-                answer += (char)(changeChar + changeValue > 'z' ? ('a' + (changeChar + changeValue - 'z' - 1)) : changeChar + changeValue);
+                answer += (char)(changeTarget > 'z' ? ('a' + (changeTarget - 'z' - 1)) : changeTarget);
             }
             else
             {
