@@ -13,8 +13,8 @@ public class Solution
             count += days[i];
         }
         
-        int weekCount = (5 + count % 7);
-        int index = weekCount > 7 ? weekCount % 7 : weekCount;
+        int weekCount = (5 + count % dayOfWeeks.Length);
+        int index = weekCount > dayOfWeeks.Length ? weekCount % dayOfWeeks.Length : weekCount;
         
         return dayOfWeeks[index - 1];
     }
