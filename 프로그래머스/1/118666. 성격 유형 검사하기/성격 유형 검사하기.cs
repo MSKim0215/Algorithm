@@ -12,17 +12,6 @@ public class Solution
             { 'J', 0 }, { 'M', 0 },
             { 'A', 0 }, { 'N', 0 }
         };
-            
-        for(int i = 0; i < survey.Length; i++)
-        {
-            for(int j = 0; j < survey[i].Length; j++)
-            {
-                if(!scoreDict.ContainsKey(survey[i][j])) 
-                {
-                    scoreDict.Add(survey[i][j], 0);
-                }
-            }
-        }
         
         for(int i = 0; i < choices.Length; i++)
         {
