@@ -2,35 +2,53 @@
 
 using namespace std;
 
+int n = 9, r = 7;
+int target[9];
+
+void CheckTotalSum()
+{
+    int totalSum = 0;
+    for(int i = 0; i < r; i++)
+    {
+        totalSum += target[i];
+    }
+    
+    if(totalSum == 100)
+    {
+        sort(target, target + 7);    // 오름차순 정렬
+        
+        for(int i = 0; i < r; i++)
+        {
+            cout << target[i] << "\n";
+        }
+        exit(0);    // 메인 로직 종료
+    }
+}
+
+void MakePermutation(int n, int r, int depth)
+{
+    if(r == depth)
+    {
+        CheckTotalSum();
+        return;
+    }
+    
+    for(int i = depth; i < n; i++)
+    {
+        swap(target[i], target[depth]);
+        MakePermutation(n, r, depth + 1);
+        swap(target[i], target[depth]);
+    }
+}
+
 int main()
 {
-    vector<int> heightVec;    // 일곱 난쟁이의 키
-    
-    int totalSum = 0;
-    int inputHeight;
-    for(int i = 0; i < 9; i++)
-    {   // 9명의 키를 입력 받는다.
+    int inputHeight = 0;
+    for(int i = 0; i < n; i++)
+    {
         cin >> inputHeight;
-        heightVec.push_back(inputHeight);
-        totalSum += inputHeight;
+        target[i] = inputHeight;
     }
     
-    sort(heightVec.begin(), heightVec.end());   // 오름차순 정렬
-    
-    do
-    {
-        int sum = 0;
-        for(int i = 0; i < 7; i++)
-        {
-            sum += heightVec[i];
-        }
-        
-        if(sum == 100) break;
-    } while(next_permutation(heightVec.begin(), heightVec.end()));
-    
-    cout << "\n";
-    for(int i = 0; i < 7; i++)
-    {
-        cout << heightVec[i] << "\n";
-    }
+    MakePermutation(n, r, 0);
 }
