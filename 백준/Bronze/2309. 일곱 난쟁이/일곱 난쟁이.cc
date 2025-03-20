@@ -17,31 +17,20 @@ int main()
     
     sort(heightVec.begin(), heightVec.end());   // 오름차순 정렬
     
-    int targetA, targetB;
-    for(int i = 0; i < heightVec.size(); i++)
-    {   
-        bool isPass = false;
-        targetA = heightVec[i];
-        
-        for(int j = i + 1; j < heightVec.size(); j++)
+    do
+    {
+        int sum = 0;
+        for(int i = 0; i < 7; i++)
         {
-            targetB = heightVec[j];
-            int otherSum = targetA + targetB;
-            
-            if(totalSum - otherSum == 100)
-            {  
-                isPass = true;
-                break;
-            }
+            sum += heightVec[i];
         }
         
-        if(isPass) break;
-    }
+        if(sum == 100) break;
+    } while(next_permutation(heightVec.begin(), heightVec.end()));
     
     cout << "\n";
-    for(int height : heightVec)
+    for(int i = 0; i < 7; i++)
     {
-        if(height == targetA || height == targetB) continue;
-        cout << height << "\n";
+        cout << heightVec[i] << "\n";
     }
 }
