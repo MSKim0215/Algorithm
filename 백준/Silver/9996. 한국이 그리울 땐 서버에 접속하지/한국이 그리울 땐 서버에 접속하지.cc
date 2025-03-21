@@ -2,25 +2,6 @@
 
 using namespace std;
 
-vector<string> Split(const string& target, string delimiter)
-{
-    vector<string> result;
-    
-    auto startIndex = 0;
-    auto endIndex = target.find(delimiter);
-    
-    while(endIndex != string::npos)
-    {
-        result.push_back(target.substr(startIndex, endIndex - startIndex));
-        startIndex = endIndex + delimiter.size();
-        endIndex = target.find(delimiter, startIndex);
-    }
-    
-    result.push_back(target.substr(startIndex));
-    
-    return result;
-}
-
 int main()
 {
     int N;
