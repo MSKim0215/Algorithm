@@ -1,5 +1,4 @@
-#include <iostream>
-#include <string>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -8,16 +7,14 @@ int main()
     string word;
     cin >> word;
     
-    int wordLength = word.length();
-    int repeatCount = wordLength / 2;
-    int isBool = 1;
-    for(int i = 0; i < repeatCount; i++)
+    string reverseWord = word;
+    reverse(reverseWord.begin(), reverseWord.end());
+    
+    if(reverseWord == word)
     {
-        if(word[i] != word[wordLength - i - 1])
-        {
-            isBool = 0;
-            break;
-        }
+        cout << 1 << "\n";
+        return 0;
     }
-    cout << isBool;
+    
+    cout << 0 << "\n";
 }
