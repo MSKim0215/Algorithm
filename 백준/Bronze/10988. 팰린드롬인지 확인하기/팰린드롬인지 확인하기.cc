@@ -4,17 +4,11 @@ using namespace std;
 
 int main()
 {
-    string word;
-    cin >> word;
+    string answer;
+    cin >> answer;
     
-    string reverseWord = word;
-    reverse(reverseWord.begin(), reverseWord.end());
+    string reverseStr = answer;
+    reverse(reverseStr.begin(), reverseStr.end());
     
-    if(reverseWord == word)
-    {
-        cout << 1 << "\n";
-        return 0;
-    }
-    
-    cout << 0 << "\n";
+    cout << (answer == reverseStr) << "\n";
 }
