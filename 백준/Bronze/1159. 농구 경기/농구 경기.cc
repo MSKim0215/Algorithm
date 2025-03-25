@@ -7,30 +7,24 @@ int main()
     int N;
     cin >> N;
     
-    map<char, int> alphabetMap;
+    map<char, int> alphabetsMap;
     for(int i = 0; i < N; i++)
     {
-        string input;
-        cin >> input;
+        string name;
+        cin >> name;
         
-        if(alphabetMap.find(input[0]) != alphabetMap.end())
-        {
-           alphabetMap[input[0]]++;
-        }
-        else
-        {
-            alphabetMap.insert(pair<char, int>(input[0], 1));
-        }
+        alphabetsMap[name[0]]++;
     }
     
-    bool isCount = false;
-    for(auto iter = alphabetMap.begin(); iter != alphabetMap.end(); iter++)
+    string answer;
+    for(auto alphabet : alphabetsMap)
     {
-        if(iter->second < 5) continue;
+        if(alphabet.second < 5) continue;
         
-        isCount = true;
-        cout << iter->first;
+        answer += alphabet.first;
     }
     
-    if(!isCount) cout << "PREDAJA";
+    if(answer == "") answer = "PREDAJA";
+    
+    cout << answer << "\n";
 }
